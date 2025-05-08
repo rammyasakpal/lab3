@@ -1,25 +1,17 @@
-# Lab 3
+TCP Calculator Server in Go
 
-CSE 124/224 Spring 2025 Lab 3 Starter Code
+This project implements a concurrent TCP-based calculator server in Go. The server accepts client connections, processes arithmetic commands over the network, and returns results in real time using the CRLF protocol format.
 
-This repository contains the startercode that you'll use for lab 3.
+How It Works
 
-## Building
+Each client session supports basic arithmetic operations:
+- ADD n – Add n to accumulator
+- SUB n – Subtract n from accumulator
+- MUL n – Multiply accumulator by n
+- SET n – Set accumulator to n
+- Sending a blank line (\r\n) returns the current value and resets the accumulator.
 
-To build your calculator server:
+Each session is handled in its own goroutine, supporting concurrent clients.
 
-$ go build -o bin/netcalculator src/netcalculator.go
-
-## Submission
-
-Your submission should include your code in the `src` directory (and should be able to be built with the above command)
-
-No report is needed for this lab
-
-## Checklist
-
-* Your netcalculator code implementation in src/netcalculator.go
-* Push your code to GitHub.com
-* Go to gradescope and submit your code there by linking your github account
-
-Good luck and thanks!
+Build & Run
+bash: go build -o bin/calculator src/server.go
